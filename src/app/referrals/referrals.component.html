@@ -1,0 +1,173 @@
+                <div class="row>">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6 col-xlg-4">                            <div class="card-body p-b-0">
+                                <h4 class="card-title">Referral Tab</h4>
+                                <h6 class="card-subtitle">You can filter by using the <code>search</code> column</h6> 
+                                </div>
+                            </div> 
+
+                            <div class="col-md-6 col-lg-6 col-xlg-4 text-center">
+                                <form class="form-horizontal form-material">
+                                    <div class="form-group">
+                                <label style="padding-top:25px">
+                                    <input [(ngModel)]="fullname" [ngModelOptions]="{standalone: true}" class="form-control form-control-line" placeholder="Search referral">
+                                </label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs customtab" role="tablist">
+                                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home2" role="tab"><span class="hidden-sm-up">level 1</span> <span class="hidden-xs-down">Level One</span></a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile2" role="tab"><span class="hidden-sm-up"> level 2</span> <span class="hidden-xs-down">Level Two</span></a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#messages2" role="tab"><span class="hidden-sm-up"> level 3</span> <span class="hidden-xs-down">Level Three</span></a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#four" role="tab"><span class="hidden-sm-up"> level 4</span> <span class="hidden-xs-down">Level Four</span></a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#five" role="tab"><span class="hidden-sm-up"> level 5</span> <span class="hidden-xs-down">Level Five</span></a> </li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="home2" role="tabpanel">
+                                    <div class="text-center" style="margin-top: 3%">Total number of Active Referrals: {{active1}}</div>
+                                    <div class="p-20">
+                                        <div class="row">
+                                        <div class="col-md-6 col-lg-6 col-xlg-4" *ngFor="let x of ref1 | Rfilter: fullname">
+                                        <div class="card card-body">
+                                            <div class="row">
+                                                <div class="col-md-4 col-lg-3 text-center">
+                                                    <a><img src="{{picUrl + x.profile}}" alt="user" class="img-circle img-responsive"></a>
+                                                </div>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <h3 class="box-title m-b-0">{{x.fullname}}</h3> <small>{{x.occupation}}</small>
+                                                    <address>
+                                                        Username: {{x.userID}}
+                                                            <br/>
+                                                        Total Subscription:   {{x.totalSubscription}}
+                                                        <br/>
+                                                        Phone: {{x.phone}}
+                                                        <br/>
+                                                        Email: {{x.email}}
+                                                    </address>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane " id="profile2" role="tabpanel">
+                                        <div class="text-center" style="margin-top: 3%">Total number of Active Referrals: {{active2}}</div>
+                                        <div class="p-20">
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6 col-xlg-4" *ngFor="let x of ref2 | Rfilter: fullname">
+                                        <div class="card card-body">
+                                            <div class="row">
+                                                <div class="col-md-4 col-lg-3 text-center">
+                                                    <a><img src="{{picUrl + x.profile}}" alt="user" class="img-circle img-responsive"></a>
+                                                </div>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <h3 class="box-title m-b-0">{{x.fullname}}</h3> <small>{{x.occupation}}</small>
+                                                    <address>
+                                                        Username: {{x.userID}}
+                                                            <br/>
+                                                        Total Subscription:   {{x.totalSubscription}}
+                                                        <br/>
+                                                        Phone: {{x.phone}}
+                                                        <br/>
+                                                        Email: {{x.email}}
+                                                    </address>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                        </div>
+                                        </div>
+                                </div>
+                                <div class="tab-pane" id="messages2" role="tabpanel">
+                                        <div class="text-center" style="margin-top: 3%">Total number of Active Referrals: {{active3}}</div>
+                                        <div class="p-20">
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6 col-xlg-4" *ngFor="let x of ref3 | Rfilter: fullname">
+                                        <div class="card card-body">
+                                            <div class="row">
+                                                <div class="col-md-4 col-lg-3 text-center">
+                                                    <a><img src="{{picUrl + x.profile}}" alt="user" class="img-circle img-responsive"></a>
+                                                </div>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <h3 class="box-title m-b-0">{{x.fullname}}</h3> <small>{{x.occupation}}</small>
+                                                    <address>
+                                                        Username: {{x.userID}}
+                                                        <br/>
+                                                        Total Subscription:   {{x.totalSubscription}}
+                                                        <br/>
+                                                        Phone: {{x.phone}}
+                                                        <br/>
+                                                        Email: {{x.email}}
+                                                    </address> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                        </div>
+                                        </div>
+                                </div>
+                                <div class="tab-pane" id="four" role="tabpanel">
+                                        <div class="text-center" style="margin-top: 3%">Total number of Active Referrals: {{active4}}</div>
+                                        <div class="p-20">
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6 col-xlg-4" *ngFor="let x of ref4 | Rfilter: fullname">
+                                        <div class="card card-body">
+                                            <div class="row">
+                                                <div class="col-md-4 col-lg-3 text-center">
+                                                    <a><img src="{{picUrl + x.profile}}" alt="user" class="img-circle img-responsive"></a>
+                                                </div>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <h3 class="box-title m-b-0">{{x.fullname}}</h3> <small>{{x.occupation}}</small>
+                                                    <address>
+                                                        Username: {{x.userID}}
+                                                        <br/>
+                                                        Total Subscription:   {{x.totalSubscription}}
+                                                        <br/>
+                                                        Phone: {{x.phone}}
+                                                        <br/>
+                                                        Email: {{x.email}}
+                                                    </address> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                        </div>
+                                        </div>
+                                </div>
+                                
+                                <div class="tab-pane" id="five" role="tabpanel">
+                                    <div class="text-center" style="margin-top: 3%">Total number of Active Referrals: {{active5}}</div>
+                                    <div class="p-20">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-6 col-xlg-4" *ngFor="let x of ref5 | Rfilter: fullname">
+                                    <div class="card card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 col-lg-3 text-center">
+                                                <a><img src="{{picUrl + x.profile}}" alt="user" class="img-circle img-responsive"></a>
+                                            </div>
+                                            <div class="col-md-8 col-lg-9">
+                                                <h3 class="box-title m-b-0">{{x.fullname}}</h3> <small>{{x.occupation}}</small>
+                                                <address>
+                                                    Username: {{x.userID}}
+                                                    <br/>
+                                                    Total Subscription:   {{x.totalSubscription}}
+                                                    <br/>
+                                                    Phone: {{x.phone}}
+                                                    <br/>
+                                                    Email: {{x.email}}
+                                                </address> 
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                                    </div>
+                                    </div>
+                            </div>
+                            </div>
+                        </div>
+                </div>

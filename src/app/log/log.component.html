@@ -1,0 +1,310 @@
+<div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Personal Logs</h4>
+                                <h6 class="card-subtitle">List of logs and transactions by customers</h6>
+                                <div class="row m-t-40">
+                                    <!-- Column -->
+                                    <div class="col-md-6 col-lg-3 col-xlg-3">
+                                        <div class="card card-inverse card-info">
+                                            <div class="box bg-info text-center">
+                                                <h1 class="font-light text-white">{{withdrawL}}</h1>
+                                                <h6 class="text-white">Total withdrawls</h6>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <!-- Column -->
+                                    <div class="col-md-6 col-lg-3 col-xlg-3">
+                                        <div class="card card-primary card-inverse">
+                                            <div class="box text-center">
+                                                <h1 class="font-light text-white">{{transfersL}}</h1>
+                                                <h6 class="text-white">Total Transfers</h6> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Column -->
+                                    <div class="col-md-6 col-lg-3 col-xlg-3">
+                                        <div class="card card-inverse card-success">
+                                            <div class="box text-center">
+                                                <h1 class="font-light text-white">{{totalSubscription}}</h1>
+                                                <h6 class="text-white">Total Subscription</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Column -->
+                                    <div class="col-md-6 col-lg-3 col-xlg-3">
+                                        <div class="card card-inverse card-dark">
+                                            <div class="box text-center">
+                                                <h1 class="font-light text-white">{{ordersL}}</h1>
+                                                <h6 class="text-white">Total Transactions</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Column -->
+                                </div>
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs customtab" role="tablist">
+                                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#Orders" role="tab"><span class="hidden-sm-up">Order</span> <span class="hidden-xs-down">Orders</span></a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Withdrawals" role="tab"><span class="hidden-sm-up">Withdrawals</span> <span class="hidden-xs-down">Withdrawals</span></a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Transactions" role="tab"><span class="hidden-sm-up">Transactions</span> <span class="hidden-xs-down">Transfers</span></a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Payments" role="tab"><span class="hidden-sm-up">Payment</span> <span class="hidden-xs-down">Payment</span></a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Commission" role="tab"><span class="hidden-sm-up">Commission</span> <span class="hidden-xs-down">Commission</span></a> </li>
+                            </ul>
+
+                            <div class="tab-content" style="overflow: auto !important">
+                                <div class="tab-pane active p-20" id="Orders" role="tabpanel">
+                                    <h4>Note: click on row to sort </h4>
+                                <div class="table-responsive"> 
+                                    <table id="demo-foo-addrow"  data-show-toggle="true" data-expand-first="true" footable class="table breakpoint-sm m-t-30 table-hover no-wrap contact-list" data-page-size="3">
+                                        <thead>
+                                            <tr>
+                                                <th id="sn">S/N</th>
+                                                <th>orderID #</th>
+                                                <th>PickUp</th>
+                                                <th>Package</th>
+                                                <th>Status</th>
+                                                <th  data-breakpoints="xs sm">Amount</th>
+                                                <th>Cost</th>
+                                                <th>Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let order of orders; let i = index">
+                                                <td>{{i + 1}}</td>
+                                                <td>{{order.orderID}}</td>
+                                                <td>{{order.partnerName}}</td>
+                                                <td>{{order.packageName}}</td>
+                                                <td><span [ngClass]="setClass(order, 'c')">{{setClass(order, 't')}}</span> </td>
+                                                <td>{{order.orderCount}}</td>
+                                                <td>&#8358; {{order.amount}}</td>
+                                                <td>{{order.transDate * 1000 | date:'fullDate'}}</td>
+                                                <td>
+                                                    <button *ngIf="order.status === '0'" tooltip="cancel order" (click)="cancelSwal.show()" id="delButton"><i class="ti-close" aria-hidden="true"></i></button>
+                                                    <a *ngIf="order.status === '10'" ><i class="ti-tick" aria-hidden="true"></i></a>
+                                                    <swal
+                                                        #cancelSwal
+                                                        title="Cancel Order?"
+                                                        text="Are you sure you want to cancel pending order?"
+                                                        type="question"
+                                                        [showCancelButton]="true"
+                                                        [focusCancel]="false"
+                                                        (confirm)="delOrder(order)">
+                                                        </swal>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="2">
+                                                </td>
+                                                <td colspan="6">
+                                                    <div class="text-right">
+                                                        <ul class="pagination"> </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                </div>
+                                <div class="tab-pane  p-20" id="Withdrawals"  style="overflow: auto" role="tabpanel">
+                                    <h4>Note: click on row to sort </h4>
+                                    <div class="table-responsive">
+                                    <table id="demo-foo-addrow2"  data-show-toggle="true" data-expand-first="true" footable class="table table-responsive breakpoint-sm m-t-30 table-hover no-wrap contact-list" data-page-size="3">
+                                        <thead>
+                                            <tr>
+                                                <th id="sn">S/N</th>
+                                                <th>withdrawID #</th>
+                                                <th>Account Name</th>
+                                                <th>Account Number</th>
+                                                <th>Status</th>
+                                                <th>Charge</th>
+                                                <th>Amount</th>
+                                                <th>Transaction Date</th>
+                                                <th>Completed Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let withdraw of withdraw; let i = index">
+                                                <td>{{i + 1}}</td>
+                                                <td>{{withdraw._id}}</td>
+                                                <td>{{withdraw.accountName}}</td>
+                                                <td>{{withdraw.accountNumber}}</td>
+                                                <td><span [ngClass]="setClassw(withdraw, 'c')">{{setClassw(withdraw, 't')}}</span> </td>
+                                                <td>{{withdraw.charge}}</td>
+                                                <td>&#8358; {{withdraw.amount}}</td>
+                                                <td>{{withdraw.transDate * 1000 | date:'fullDate'}}</td>
+                                                <td>{{withdraw.completedDate * 1000 | date:'fullDate'}}</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="2">
+                                                </td>
+                                                <td colspan="6">
+                                                    <div class="text-right">
+                                                        <ul class="pagination"> </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                </div>
+                                <div class="tab-pane p-20" id="Transactions"  style="overflow: auto" role="tabpanel">
+                                    <h4>Note: click on row to sort </h4>
+                                    <div class="table-responsive">
+                                    <table id="demo-foo-addrow3"  data-show-toggle="true" data-expand-first="true" footable class="table table-responsive breakpoint-sm m-t-30 table-hover no-wrap contact-list" style="overflow:auto !important" data-page-size="3">
+                                        <thead>
+                                            <tr>
+                                                <th id="sn">S/N</th>
+                                                <th>TransferID #</th>
+                                                <th>Sender</th>
+                                                <th>Beneficiary</th>
+                                                <th>Status</th>
+                                                <th  data-breakpoints="xs sm">Amount</th>
+                                                <th>Type</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let transfer of transfers; let i = index">
+                                                <td>{{i + 1}}</td>
+                                                <td>{{transfer.transID}}</td>
+                                                <td>{{transfer.sender}}</td>
+                                                <td>{{transfer.beneficiary}}</td>
+                                                <td><span [ngClass]="setClasst(transfer, 'c')">{{setClasst(transfer, 't')}}</span> </td>
+                                                <td>&#8358; {{transfer.amount}}</td>
+                                                <td><span [ngClass]="setClassty(transfer, 'c')">{{setClassty(transfer, 't')}}</span> </td>
+                                                <td>{{transfer.transDate * 1000 | date:'fullDate'}}</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="2">
+                                                </td>
+                                                <td colspan="6">
+                                                    <div class="text-right">
+                                                        <ul class="pagination"> </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                </div>
+                                <div class="tab-pane p-20" id="Payments"  style="overflow: auto" role="tabpanel">
+                                    <h4>Note: click on row to sort </h4>
+                                    <div class="table-responsive">
+                                    <table id="demo-foo-addrow4"  data-show-toggle="true" data-expand-first="true" footable class="table table-responsive breakpoint-sm m-t-30 table-hover no-wrap contact-list" style="overflow:auto !important" data-page-size="3">
+                                        <thead>
+                                            <tr>
+                                                <th id="sn">S/N</th>
+                                                <th>orderID</th>
+                                                <th>Method</th>
+                                                <th>Status</th>
+                                                <th  data-breakpoints="xs sm">Amount</th>
+                                                <th>Payment ID</th>
+                                                <!-- <th>Message</th> -->
+                                                <th>Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let payment of payments; let i = index">
+                                                <td>{{i + 1}}</td>
+                                                <td>{{payment.orderID}}</td>
+                                                <td><span>{{setClasspm(payment, 't')}}</span> </td>
+                                                <td><span [ngClass]="setClassps(payment, 'c')">{{setClassps(payment, 't')}}</span> </td>
+                                                <td>&#8358; {{payment.amount}}</td>
+                                                <td>{{payment._id}}</td>
+                                                <!-- <td>{{payment.message}}</td> -->
+                                                <td>{{payment.transDate * 1000 | date:'fullDate'}}</td>
+                                                <td> 
+                                                        <div class="btn-group"  *ngIf="payment.status === '0'">
+                                                                <input class="ng-hide" hidden id="input-file-id" type="file" accept="image/*" #pop="ngModel" ngModel name="pop"  (change)="changeListener($event, payment)" />
+                                                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    Action
+                                                                </button>
+                                                                <div class="dropdown-menu animated bounce">
+                                                                    <a class="dropdown-item" (click)="cancelPSwal.show()" id="delPButton">Cancel Payment</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item" for="input-file-id" (click)="upload(payment)" id="uploadButton">Upload Payment</a>
+                                                                </div>
+                                                            </div>
+                                                    <a *ngIf="payment.status === '1'" class="btn btn-success btn-circle"><i class="fa fa-check" style="color: white"></i> </a>
+                                                    <swal
+                                                        #cancelPSwal
+                                                        title="Cancel Payment?"
+                                                        text="Are you sure you want to cancel pending payment?"
+                                                        type="question"
+                                                        [showCancelButton]="true"
+                                                        [focusCancel]="false"
+                                                        (confirm)="delPayment(payment)">
+                                                        </swal>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="2">
+                                                </td>
+                                                <td colspan="6">
+                                                    <div class="text-right">
+                                                        <ul class="pagination"> </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                </div>
+                                <div class="tab-pane p-20" id="Commission"  style="overflow: auto" role="tabpanel">
+                                    <h4>Note: click on row to sort </h4>
+                                    <div class="table-responsive">
+                                    <table id="demo-foo-addrow4"  data-show-toggle="true" data-expand-first="true" footable class="table table-responsive breakpoint-sm m-t-30 table-hover no-wrap contact-list" style="overflow:auto !important" data-page-size="3">
+                                        <thead>
+                                            <tr>
+                                                <th id="sn">S/N</th>
+                                                <th>orderID</th>
+                                                <th>Method</th>
+                                                <th>Status</th>
+                                                <th  data-breakpoints="xs sm">Amount</th>
+                                                <th>Payment ID</th>
+                                                <!-- <th>Message</th> -->
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let payment of payments; let i = index">
+                                                <td>{{i + 1}}</td>
+                                                <td>{{payment.orderID}}</td>
+                                                <td><span>{{setClasspm(payment, 't')}}</span> </td>
+                                                <td><span [ngClass]="setClassps(payment, 'c')">{{setClassps(payment, 't')}}</span> </td>
+                                                <td>&#8358; {{payment.amount}}</td>
+                                                <td>{{payment._id}}</td>
+                                                <!-- <td>{{payment.message}}</td> -->
+                                                <td>{{payment.transDate * 1000 | date:'fullDate'}}</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="2">
+                                                </td>
+                                                <td colspan="6">
+                                                    <div class="text-right">
+                                                        <ul class="pagination"> </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>

@@ -1,0 +1,56 @@
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- User profile -->
+        <div class="user-profile" style="background: url(assets/images/background/user-info.jpg) no-repeat;">
+            <!-- User profile image -->
+            <div class="profile-img"> <img src="{{profileimage}}" alt="user" /> </div>
+            <!-- User profile text-->
+            <div class="profile-text" style=" padding-bottom: 0px !important"> <a class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{fullname}}<span class="caret"></span></a>
+                <div class="dropdown-menu animated flipInY">
+                    <a (click)="onProfile()" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+                    <a (click)="onReferrals()" class="dropdown-item"><i class="ti-world"></i> My Referrals</a>
+                    <div class="dropdown-divider"></div> <a (click)="onAccount()" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
+                    <div class="dropdown-divider"></div> <a (click)="onLogout()" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+        <!-- End User profile text-->
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li class="nav-small-cap">PERSONAL</li>
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="dashboard"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
+                </li>
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="newsdetail"><i class="mdi mdi-gauge"></i><span class="hide-menu">News & Promotions</span></a>
+                </li>
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="subscription"><i class="mdi mdi-gauge"></i><span class="hide-menu">Subscription</span></a>
+                </li>
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="profile"><i class="mdi mdi-gauge"></i><span class="hide-menu">Profile</span></a>
+                </li>
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="account"><i class="mdi mdi-gauge"></i><span class="hide-menu">Withdrawal/Transfer</span></a>
+                </li>
+                <li>
+                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="log"><i class="mdi mdi-gauge"></i><span class="hide-menu">Logs</span></a>
+                </li>
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+    <!-- Bottom points-->
+    <div class="sidebar-footer">
+        <!-- item-->
+        <a (click)="onAccount()" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
+        <!-- item-->
+        <a (click)="onProfile()" class="link" data-toggle="tooltip" title="Profile"><i class="fa fa-user"></i></a>
+        <!-- item-->
+        <a (click)="onLogout()" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
+    </div>
+    <!-- End Bottom points-->
+</aside>

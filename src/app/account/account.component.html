@@ -1,0 +1,222 @@
+<!-- Row -->
+<!-- <div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-inverse">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">Important Notice</h4></div>
+            <div class="card-body">
+                <p class="card-text">There is a 0.01% charge on every withdrawal which is capped at &#8358;2000.</p>
+            </div>
+        </div>
+    </div>
+</div> -->
+                <div class="row">
+                    <div class="col-lg-4 col-xlg-4 col-md-4">
+                        <div class="card earning-widget">
+                        <div class="card-body">
+                            <div class="card-title"> 
+                                <div class="col-xs-12 col-md-12 col-lg-12 col-xlg-12">
+                                <h4 class="card-title m-b-0">Total Earning</h4>
+                                <h2 class="m-t-0">&#8358;{{balance}}</h2>
+                                </div>
+                                <div class="col-xs-12">
+                                <a data-toggle="modal" data-target="#transferModal" class="m-t-10 waves-effect waves-dark btn btn-primary btn-md text-white btn-rounded pull-left">Transfer</a>
+                                </div>
+                                <div class="col-xs-12">
+                                <a data-toggle="modal" data-target="#withdrawModal" class="m-t-10 waves-effect waves-dark btn btn-primary btn-md text-white btn-rounded pull-right">Withdraw</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-8 col-xlg-8 col-md-8">
+                        <div class="card">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs profile-tab" role="tablist">
+                                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#bank" role="tab">Banks</a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#createbank" role="tab">Create Bank</a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#bmcaddress" role="tab">BMC Address</a> </li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                              
+                                <!--first tab-->
+                                
+                                <div class="tab-pane active" id="bank" role="tabpanel">
+                                    <div class="card-body">
+                                <h4 class="card-title">My Banks</h4>
+                                <h6 class="card-subtitle">Below are the list of banks you can withdraw into</h6>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Bank Name</th>
+                                                <th>Acc No</th>
+                                                <th>Acc Name</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let x of mybanks; let i = index">
+                                                <td value="{{x.id}}">{{i + 1}}</td>
+                                                <td>{{x.bankName}}</td>
+                                                <td>{{x.accountNumber}}</td>
+                                                <td>{{x.accountName}}</td>
+                                                <td><a (click)="deleteSwal.show(x)" data-toggle="tooltip" data-original-title="Delete Bank"><i class="ti-trash text-danger"></i></a> </td>
+                                                <swal
+                                                        #deleteSwal
+                                                        title="Delete bank?"
+                                                        text="Are you sure you want to delete this bank?"
+                                                        type="warning"
+                                                        [showCancelButton]="true"
+                                                        [focusCancel]="false"
+                                                        (confirm)="onSelect(x)">
+                                                        </swal>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                                </div>
+
+                                <!--Second Tab-->
+                                <div class="tab-pane" id="createbank" role="tabpanel">
+                                    <div class="card-body">
+                                        <form class="form-horizontal form-material" #createBank="ngForm" (ngSubmit)="OnSubmit(createBank)">
+                                            <div class="form-group">
+                                                <label class="col-md-12">Bank Name</label>
+                                                <div class="input-field col-md-12">
+                                                    <select [(ngModel)]="banksd" #bankName="ngModel" name="bankName" class="form-control">
+                                                    <option *ngFor="let x of banks" [value]="x.name">{{x.name}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-12">Account Number</label>
+                                                <div class="col-md-12">
+                                                    <input type="text" #accountNumber="ngModel" [(ngModel)]="accountNumbers" name="accountNumber" class="form-control form-control-line validate" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-12">Account Name</label> 
+                                                <div class="col-md-12">
+                                                    <input type="text" #accountName="ngModel" [(ngModel)]="accountNames" name="accountName" class="form-control form-control-line validate" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <button class="btn btn-success" type="submit">Update Profile</button>
+                                                    <div  id="loadingp" class="spinner pull-right" style="display:inherit"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!--Third Tab-->
+                                <div class="tab-pane" id="bmcaddress" role="tabpanel">
+                                    <div class="card-body">
+                                        <form class="form-horizontal form-material" #createBmcadd="ngForm" (ngSubmit)="submitUp(createBmcadd)">
+                                            <div class="form-group">
+                                                <label class="col-md-12">Address</label> 
+                                                <div class="col-md-12">
+                                                    <input type="text" #address="ngModel" [(ngModel)]="bmcAdd" name="address" class="form-control form-control-line validate" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <button class="btn btn-success" type="submit">Save</button>
+                                                    <div  id="loadingBM" class="spinner pull-right" style="display:inherit"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- Row -->
+
+                <!---------modal withdraw -------->
+                <div class="modal fade" id="withdrawModal" tabindex="-1" role="dialog" aria-labelledby="withdrawModalLabel1">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="basicModalLabel1">Withdraw </h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                        <form class="form-horizontal form-material" #withdraw="ngForm" (ngSubmit)="OnSubmitW(withdraw)">
+                                            <div class="form-group">
+                                                <label class="col-md-12">Amount</label>
+                                                <div class="input-field col-md-12">
+                                                    <input type="number" #amount="ngModel" [(ngModel)]="amountw" name="amount" class="form-control form-control-line validate" required>
+                                                </div> 
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-12">Password</label>
+                                                <div class="col-md-12">
+                                                    <input type="password" #wpass="ngModel" [(ngModel)]="wpasss" name="wpass" class="form-control form-control-line validate" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                        <label  class="control-label">Select Bank:</label>
+                                                        <select [(ngModel)]="banksf" #bank="ngModel" name="bank"  class="form-control" >
+                                                        <option *ngFor="let x of mybanks" [value]="x.id">{{x.bankName}}</option>
+                                                        </select>
+                                                    </div>
+                                                    <!--<div class="modal-footer">-->
+                                            <div class="form-group pull-right">
+                                                <div  id="loadingw" class="spinner pull-left" style="display:inherit"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button class="btn btn-primary" type="submit">Proceed</button>
+                                            </div>
+                                                    <!--</div>-->
+                                        </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                </div>
+
+                <!---------modal transfer -------->
+                <div class="modal fade" id="transferModal" tabindex="-1" role="dialog" aria-labelledby="withdrawModalLabel1">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="basicModalLabel1">Transfer to Beneficiary:</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                        <form class="form-horizontal form-material" #transfer="ngForm" (ngSubmit)="OnSubmitT(transfer)">
+                                            <div class="form-group">
+                                                <label class="col-md-12">Amount</label>
+                                                <div class="input-field col-md-12">
+                                                    <input type="number" #tamount="ngModel" [(ngModel)]="amountt" name="tamount" class="form-control form-control-line validate" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-12">Password</label>
+                                                <div class="col-md-12">
+                                                    <input type="password" #tpass="ngModel" [(ngModel)]="tpasss" name="tpass" class="form-control form-control-line validate" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-12">Beneficiary's ID:</label>
+                                                <div class="col-md-12">
+                                                    <input type="text" #ben="ngModel" [(ngModel)]="bene" name="ben" class="form-control form-control-line validate" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group pull-right">
+                                                <div  id="loadingt" class="spinner pull-left" style="display:inherit"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button class="btn btn-primary" type="submit">Proceed</button>
+                                            </div>
+                                                    <!--</div>-->
+                                        </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                </div>

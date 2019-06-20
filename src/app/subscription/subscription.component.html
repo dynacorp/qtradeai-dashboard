@@ -1,0 +1,375 @@
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row pricing-plan">
+                        <div class="col-md-3 col-xs-12 col-sm-6 no-padding" *ngFor="let x of pack">
+                                <div class="pricing-box">
+                                    <div class="pricing-body b-r b-l">
+
+
+                                        <div class="pricing-header">
+                                            <h4 class="text-center">{{x.details}}</h4>
+                                            <h2 class="text-center" style="font-size: 50px !important; font-weight: 300 !important"><span class="price-sign">₦</span>{{x.price}}</h2>
+                                            <p class="uppercase">per subscription</p>
+                                        </div>
+                                        <div class="price-table-content">
+                                            <div class="price-row"><i class="icon-user"></i> BMcoin Bonus</div>
+                                            <div class="price-row"><i class="icon-screen-smartphone"></i> Subscriber: {{x.reward}}BMCT</div>
+                                            <div class="price-row"><i class="icon-drawar"></i> Level 1 : {{x.lv1bmt}}BMCT</div>
+                                            <div class="price-row"><i class="icon-refresh"></i> Level 2 : {{x.lv2bmt}}BMCT</div>
+                                            <div class="price-row"><i class="icon-drawar"></i> Level 3: {{x.lv3bmt}}BMCT</div>
+                                            <div class="price-row"><i class="icon-drawar"></i> Level 4: {{x.lv4bmt}}BMCT</div>
+                                            <div class="price-row"><i class="icon-drawar"></i> Level 5: {{x.lv5bmt}}BMCT</div>
+                                            <div class="price-row"><i class="icon-drawar"></i> Revenue Monthly: {{x.profit}}</div>
+                                            <div class="price-row">
+                                                <button class="btn btn-success waves-effect waves-light m-t-20" (click)="submit(x)">Sign up</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    <!-- <div class="col-md-3 col-xs-12 col-sm-6 no-padding">
+                        <div class="pricing-box">
+                            <div class="pricing-body b-r b-l">
+
+
+                                <div class="pricing-header">
+                                    <h4 class="text-center">AI- Basic</h4>
+                                    <h2 class="text-center"><span class="price-sign">$</span>{{prebasicP}}</h2>
+                                    <p class="uppercase">per subscription</p>
+                                </div>
+                                <div class="price-table-content">
+                                    <div class="price-row"><i class="icon-user"></i> BMcoin Bonus</div>
+                                    <div class="price-row"><i class="icon-screen-smartphone"></i> Subscriber: 2BMCT</div>
+                                    <div class="price-row"><i class="icon-drawar"></i> Level1 : 1BMCT</div>
+                                    <div class="price-row"><i class="icon-refresh"></i> Level 2 : 1BMCT</div>
+                                    <div class="price-row"><i class="icon-drawar"></i> Leve 3: 1BMCT</div>
+                                    <div class="price-row"><i class="icon-drawar"></i> Trade Profit Monthly: 5% -20%</div>
+                                    <div class="price-row">
+                                        <button class="btn btn-success waves-effect waves-light m-t-20" (click)="preBasicSwal()">Sign up</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-12 col-sm-6 no-padding">
+                        <div class="pricing-box">
+                            <div class="pricing-body b-l b-r">
+                                <div class="pricing-header">
+                                    <h4 class="text-center">AI- Regular</h4>
+                                    <h2 class="text-center"><span class="price-sign">$</span>{{basicP}}</h2>
+                                    <p class="uppercase">per subscription</p>
+                                </div>
+                                <div class="price-table-content">
+                                    <div class="price-row"><i class="icon-user"></i> BMcoin Bonus</div>
+                                    <div class="price-row"><i class="icon-screen-smartphone"></i> Subscriber: 2BMCT</div>
+                                    <div class="price-row"><i class="icon-drawar"></i> Level1 : 1BMCT</div>
+                                    <div class="price-row"><i class="icon-refresh"></i> Level 2 : 1BMCT</div>
+                                    <div class="price-row"><i class="icon-refresh"></i> Leve 3: 1BMCT</div>
+                                    <div class="price-row"><i class="icon-drawar"></i> Trade Profit Monthly: 5% -20%</div>
+                                    <div class="price-row">
+                                        <button class="btn btn-success waves-effect waves-light m-t-20" (click)="BasicSwal()">Sign up</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-12 col-sm-6 no-padding">
+                        <div class="pricing-box featured-plan">
+                            <div class="pricing-body">
+                                <div class="pricing-header">
+                                    <h4 class="price-lable text-white bg-warning"> Popular</h4>
+                                    <h4 class="text-center">AI- Pro (Master Node)</h4>
+                                    <h2 class="text-center"><span class="price-sign">$</span>{{regularP}}</h2>
+                                    <p class="uppercase">per subscription</p>
+                                </div>
+                                <div class="price-table-content">
+                                    <div class="price-row"><i class="icon-user"></i> BMcoin Bonus</div>
+                                    <div class="price-row"><i class="icon-screen-smartphone"></i> Subscriber: 3BMCT</div>
+                                    <div class="price-row"><i class="icon-drawar"></i> Level1 : 5BMCT</div>
+                                    <div class="price-row"><i class="icon-refresh"></i> Level 2 : 2BMCT</div>
+                                    <div class="price-row"><i class="icon-refresh"></i> Level 3 : 2BMCT</div>
+                                    <div class="price-row"><i class="icon-drawar"></i> Trade Profit Monthly: 5% -20%</div>
+                                    <div class="price-row">
+                                        <button class="btn btn-lg btn-info waves-effect waves-light m-t-20" (click)="first()">Sign up</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-12 col-sm-6 no-padding">
+                        <div class="pricing-box">
+                            <div class="pricing-body b-r b-l">
+                                <div class="pricing-header">
+                                    <h4 class="text-center">AI-Advance (Master Node)</h4>
+                                    <h2 class="text-center"><span class="price-sign">$</span>{{premiumP}}</h2>
+                                    <p class="uppercase">per subscription</p>
+                                </div>
+                                <div class="price-table-content">
+                                    <div class="price-row"><i class="icon-user"></i> BMcoin Bonus</div>
+                                    <div class="price-row"><i class="icon-screen-smartphone"></i> Subscriber: 7BMCT</div>
+                                    <div class="price-row"><i class="icon-drawar"></i> Level1 : 9BMCT</div>
+                                    <div class="price-row"><i class="icon-refresh"></i> Level 2 : 2.5BMCT</div>
+                                    <div class="price-row"><i class="icon-refresh"></i> Leve 3: 2.5BMCT</div>
+                                    <div class="price-row"><i class="icon-drawar"></i> Trade Profit Monthly: 5% -20%</div>
+                                    <div class="price-row">
+                                        <button class="btn btn-success waves-effect waves-light m-t-20" (click)="first()">Sign up</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!---------pre-modal basic -------->
+<div class="modal fade" id="prebasicModal" tabindex="-1" role="dialog" aria-labelledby="prebasicModalLabel1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="basicModalLabel1">Choose your picker</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal form-material" #prebasicModal="ngForm" >
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">State:</label>
+                        <select [(ngModel)]="statesp" #state="ngModel" name="state" value="state" class="form-control" (change)="getSelectedState()">
+                                                        <option *ngFor="let x of states" [value]="x.id">{{x.name}}</option>
+                                                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Local Govt:</label>
+                        <select [(ngModel)]="lgs" #lg="ngModel" name="lg" value="lg" class="form-control" (change)="getSelectedLg()">
+                                                        <option *ngFor="let y of stateslg" [value]="y.id">{{y.name}}</option>
+                                                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Choose a Pickup Location:</label>
+                        <select class="form-control" [(ngModel)]="pick" name="mustpick" (change)="getSelectedPicker()">
+                                                            <option *ngFor="let y of pickup" [value]="y.code">{{y.name}}</option>
+                                                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Choose a Patner:</label>
+                        <select [(ngModel)]="pac" #p="ngModel" name="p" value="p" class="form-control">
+                                                        <option *ngFor="let y of patner" [value]="y.id">{{y.name}}</option>
+                                                        </select>
+                    </div>
+                    <div class="form-group range-field">
+                        <label for="message-text" class="control-label">Number of Packages:</label>
+                        <select [(ngModel)]="coun" required #count="ngModel" name="count" value="count" class="form-control">
+                                                        <option [value]="1">1</option>
+                                                        <option [value]="2">2</option>
+                                                        <option [value]="3">3</option>
+                                                        <option [value]="4">4</option>
+                                                        <option [value]="5">5</option>
+                                                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div id="loading" class="spinner pull-left" style="display:inherit">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary prebasicModalB" data-dismiss="modal" type="submit" [disabled]="!prebasicModal.valid">Proceed</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---------modal basic -------->
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModalLabel1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="basicModalLabel1">Choose your picker</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal form-material" #basicModal="ngForm" (ngSubmit)="OnBasic()">
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">State:</label>
+                        <select [(ngModel)]="statesp" #state="ngModel" name="state" value="state" class="form-control" (change)="getSelectedState()">
+                                                        <option *ngFor="let x of states" [value]="x.id">{{x.name}}</option>
+                                                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Local Govt:</label>
+                        <select [(ngModel)]="lgs" #lg="ngModel" name="lg" value="lg" class="form-control" (change)="getSelectedLg()">
+                                                        <option *ngFor="let y of stateslg" [value]="y.id">{{y.name}}</option>
+                                                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Choose a Pickup Location:</label>
+                        <select class="form-control" [(ngModel)]="pick" name="mustpick" (change)="getSelectedPicker()">
+                                                            <option *ngFor="let y of pickup" [value]="y.code">{{y.name}}</option>
+                                                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Choose a Patner:</label>
+                        <select [(ngModel)]="pac" #p="ngModel" name="p" value="p" class="form-control">
+                                                        <option *ngFor="let y of patner" [value]="y.id">{{y.name}}</option>
+                                                        </select>
+                    </div>
+                    <div class="form-group range-field">
+                        <label for="message-text" class="control-label">Number of Packages:</label>
+                        <select [(ngModel)]="coun" required #count="ngModel" name="count" value="count" class="form-control">
+                                                        <option [value]="1">1</option>
+                                                        <option [value]="2">2</option>
+                                                        <option [value]="3">3</option>
+                                                        <option [value]="4">4</option>
+                                                        <option [value]="5">5</option>
+                                                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div id="loading1" class="spinner pull-left" style="display:inherit">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" [disabled]="!basicModal.valid" type="submit" (click)="BasicSwal()">Proceed</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---------modal regular -------->
+<div class="modal fade" id="regularModal" tabindex="-1" role="dialog" aria-labelledby="regularModalLabel1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="regularModalLabel1">Choose your picker</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal form-material" #regularModal="ngForm" (ngSubmit)="OnRegular()">
+                    <div class="form-group">
+                        <label for="message-text" class="control-label col-xs-12">State:</label>
+                        <select [(ngModel)]="statesp" #state="ngModel" name="state" value="state" class="form-control" (change)="getSelectedState()">
+                                                        <option *ngFor="let x of states" [value]="x.id">{{x.name}}</option>
+                                                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label" style="width:100%">Local Govt:</label>
+                        <select [(ngModel)]="lgs" #lg="ngModel" name="lg" value="lg" class="form-control" (change)="getSelectedLg()">
+                                                        <option *ngFor="let y of stateslg" [value]="y.id">{{y.name}}</option>
+                                                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Choose a Pickup Location:</label>
+                        <select class="form-control" [(ngModel)]="pick" name="mustpick" (change)="getSelectedPicker()">
+                                                            <option *ngFor="let y of pickup" [value]="y.code">{{y.name}}</option>
+                                                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Choose a Patner:</label>
+                        <select [(ngModel)]="pac" #p="ngModel" name="p" value="p" class="form-control">
+                                                        <option *ngFor="let y of patner" [value]="y.id">{{y.name}}</option>
+                                                        </select>
+                    </div>
+                    <div class="form-group range-field">
+                        <label for="message-text" class="control-label">Number of Packages:</label>
+                        <select [(ngModel)]="coun" required #count="ngModel" name="count" value="count" class="form-control">
+                                                        <option [value]="1">1</option>
+                                                        <option [value]="2">2</option>
+                                                        <option [value]="3">3</option>
+                                                        <option [value]="4">4</option>
+                                                        <option [value]="5">5</option>
+                                                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div id="loading2" class="spinner pull-left" style="display:inherit">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" type="submit" [disabled]="!regularModal.valid" (click)="RegularSwal()">Proceed</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---------modal premium -------->
+<div class="modal fade" id="premiumModal" tabindex="-1" role="dialog" aria-labelledby="premiumModalLabel1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="premiumModalLabel1">Choose your picker</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal form-material" #premiumModal="ngForm" (Submit)="OnPremium()">
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">State:</label>
+                        <select [(ngModel)]="statesp" #state="ngModel" name="state" value="state" class="form-control" (change)="getSelectedState()">
+                                                        <option *ngFor="let x of states" [value]="x.id">{{x.name}}</option>
+                                                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Local Govt:</label>
+                        <select [(ngModel)]="lgs" #lg="ngModel" name="lg" value="lg" class="form-control" (change)="getSelectedLg()">
+                                                        <option *ngFor="let y of stateslg" [value]="y.id">{{y.name}}</option>
+                                                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="control-label">Choose a Pickup Location:</label>
+                        <select class="form-control" [(ngModel)]="pick" name="mustpick" (change)="getSelectedPicker()">
+                                                            <option *ngFor="let y of pickup" [value]="y.code">{{y.name}}</option>
+                                                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Choose a Patner:</label>
+                        <select [(ngModel)]="pac" required #p="ngModel" name="p" value="p" class="form-control">
+                                                        <option *ngFor="let y of patner" [value]="y.id">{{y.name}}</option>
+                                                        </select>
+                    </div>
+                    <div class="form-group range-field">
+                        <label for="message-text" class="control-label">Number of Packages:</label>
+                        <select [(ngModel)]="coun" required #count="ngModel" name="count" value="count" class="form-control">
+                                                        <option [value]="1">1</option>
+                                                        <option [value]="2">2</option>
+                                                        <option [value]="3">3</option>
+                                                        <option [value]="4">4</option>
+                                                        <option [value]="5">5</option>
+                                                        </select>
+                    </div>
+                    <!-- <div class="form-group range-field">
+                                                        <label for="message-text" class="control-label">Choose your preferred pad:</label>
+                                                        <select [(ngModel)]="padii" required #pad="ngModel" class="form-control" name="pad" value="pad">
+                                                        <option *ngFor="let y of pads" [value]="y.name">{{y.name}}</option>
+                                                        </select>
+                                                    </div> -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div id="loading3" class="spinner pull-left" style="display:inherit">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" type="submit" [disabled]="!premiumModal.valid" (click)="PremiumSwal()">Proceed</button>
+            </div>
+        </div>
+    </div>
+</div>

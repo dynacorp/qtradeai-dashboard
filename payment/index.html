@@ -1,0 +1,60 @@
+<html>
+    <form>
+    <script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+    <button type="button" onClick="payWithRave()" style="display:none">Pay Now</button>
+</form>
+
+<script>
+    const API_publicKey = "FLWPUBK-2233204600932dd6471efd4b2a21c860-X";
+    var url = 'http://qtradeai.com/dashboard/#/subscription';
+    function payWithRave() {
+        if(sessionStorage.getItem('pmr_')){
+            var d = JSON.parse(sessionStorage.getItem('pmr_'));
+            if(!parseFloat(d.amount) || d.paymentID == null || d.paymentID.length < 1){
+                sessionStorage.setItem('pstat', f);
+                sessionStorage.removeItem('pmr_');
+                location.replace(url);
+            }else{
+                var x = getpaidSetup({
+                PBFPubKey: API_publicKey,
+                customer_email: "user@sisibox.com",
+                amount: d.amount,
+                customer_phone: "234099940409",
+                currency: "NGN",
+                payment_method: "both",
+                txref: d.paymentID,
+                meta: [{
+                    metaname: "flightID",
+                    metavalue: "AP1234"
+                }],
+                onclose: function() {},
+                callback: function(response) {
+                    if (response.tx.chargeResponseCode == "00" ||response.tx.chargeResponseCode == "0") {
+                        sessionStorage.setItem('pstat', 't');
+                        sessionStorage.removeItem('pmr_');
+                        location.replace(url);
+                        // redirect to a success page
+                    } else {
+                        sessionStorage.setItem('pstat', 'f');
+                        sessionStorage.removeItem('pmr_');
+                        location.replace(url);
+                        // redirect to a failure page.
+                    }
+
+                    x.close(); // use this to close the modal immediately after payment.
+                }
+            });
+            }
+        }else {
+            sessionStorage.setItem('pstat', 'f');
+            sessionStorage.removeItem('pmr_');
+            location.replace(url);
+        }
+    }
+</script>
+<body onload="payWithRave()">
+    <div align="center" style="padding:0px, 100px, 0px, 100px">
+        please wait...
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ngx-toastr/toastr.css";
+
+input.ng-invalid.ng-dirty{
+    border-bottom-color: #e91e63;
+    box-shadow: #e91e63;
+}
+
+.contact-form-image {
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}

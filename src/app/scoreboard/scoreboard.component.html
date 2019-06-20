@@ -1,0 +1,30 @@
+<div class="row>">
+    <div class="col-12">
+    <div class="card">
+          <div class="card-body">
+              <h4 class="card-title">Sisibox Scoreboard</h4>
+              <h6 class="card-subtitle">List of top Sisibox competitors, Refer and climb your way up to the top!</h6>
+    <div class="table-responsive">
+        <table id="example2" class="table table-hover" cellspacing="0">
+          <thead>
+            <tr>
+              <th>S/N</th>
+              <th>Full Name</th>
+              <th>State</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <tr *ngFor="let device of obj; let i = index">
+              <td>{{i + 1}}</td>
+              <td>{{device.fullname}}</td>
+              <td>{{device.state}}</td>
+              <td>{{device.total}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+</div>
